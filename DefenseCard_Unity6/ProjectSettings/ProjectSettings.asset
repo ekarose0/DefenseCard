@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: b016c3859be46904084b1f1a5a60d1c7
+  productGUID: 05a7ba11f234e7244a6b6c8d00f49cdf
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -687,10 +687,10 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 283d358e-77e4-4598-9e6d-a98a032a145c
+  cloudProjectId: a4f8fa14-d6b5-4516-84d6-cddc5c6508d0
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: DefenseCard_Unity6 2024-10-18_15-16-43
+  projectName: DefenseCard_Unity6 2024-10-31_14-22-38
   organizationId: e_ka
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
