@@ -5,7 +5,7 @@ Team_도파민 중독자 [카드 디펜스 장르]
 
 ## ***Develop Tools***
 > - ***Unity 2D***
->   - *Version: 6000.0.23f1 [LTS]*
+>   - *Version: 6000.0.25f1 [LTS]*
 >   - *Universal Render Pipeline*
 > - ***Chat GPT***
 >   - *GPT 4o*
