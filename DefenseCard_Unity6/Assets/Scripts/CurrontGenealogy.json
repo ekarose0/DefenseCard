@@ -1,0 +1,7 @@
+[
+    { "id": 0, "type": "spades", "value": 1 },
+    { "id": 1, "type": "spades", "value": 2 },
+    { "id": 2, "type": "spades", "value": 3 },
+    { "id": 3, "type": "spades", "value": 4 },
+    { "id": 4, "type": "spades", "value": 5 }
+]
