@@ -12,7 +12,6 @@ public class CardInfo
 {
     public CardType cardType;
     public int cardNum;
-    public bool isSelected;
 }
 
 [CreateAssetMenu(fileName = "Cards", menuName = "ScriptableObjects/CardsSO")]

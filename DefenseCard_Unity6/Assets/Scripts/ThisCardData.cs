@@ -1,8 +1,9 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class ThisCardData : MonoBehaviour
+public class ThisCardData : MonoBehaviour, IPointerDownHandler
 {
     // 카드 타입과 값 (private 필드로 설정)
     [SerializeField] private CardType _cardType;
@@ -14,6 +15,24 @@ public class ThisCardData : MonoBehaviour
     public TMP_Text valueText1;
     public TMP_Text valueText2;
 
+    public CardInfo cardInfo;
+    public Vector3 originPos;
+
+    public bool isSelected;
+
+    //카드 정보 및 이미지 업데이트
+    public void Setup(CardInfo _cardInfo)
+    {
+        cardInfo = _cardInfo;
+
+        _cardType = cardInfo.cardType;
+        _value = cardInfo.cardNum;
+        isSelected = false;
+    }
+    private void Start()
+    {
+        UpdateCardDisplay();
+    }
     // 카드 타입 프로퍼티: 값이 설정될 때마다 카드의 UI를 업데이트
     public CardType CardType
     {
@@ -34,12 +53,6 @@ public class ThisCardData : MonoBehaviour
             _value = value;
             UpdateCardDisplay(); // 카드 값이 변경되면 UI 업데이트
         }
-    }
-
-    // Start 메서드에서 카드 UI를 초기화
-    private void Start()
-    {
-        UpdateCardDisplay();
     }
 
     // Inspector에서 값이 변경될 때 자동으로 호출되는 메서드
@@ -97,6 +110,20 @@ public class ThisCardData : MonoBehaviour
         // 두 개의 텍스트 UI 요소에 동일한 색상 설정
         valueText1.color = textColor;
         valueText2.color = textColor;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if(!isSelected)
+        {
+            isSelected = true;
+            transform.localPosition = originPos + Vector3.up * 100;
+        }
+        else
+        {
+            isSelected = false;
+            transform.localPosition = originPos;
+        }
     }
 }
     /*
