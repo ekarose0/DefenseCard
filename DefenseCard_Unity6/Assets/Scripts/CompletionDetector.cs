@@ -49,6 +49,12 @@ public class CompletionDetector : MonoBehaviour
         }
     }
 
+    public string GetBestHandDescription()
+    {
+        return bestHandDescription;
+    }
+
+
     // JSON 파일을 로드하여 카드 데이터를 초기화하는 메서드
     private void LoadJsonData()
     {
@@ -73,13 +79,17 @@ public class CompletionDetector : MonoBehaviour
         if (FindStraightFlush(cards) != null) return "Straight Flush";
         if (FindFourOfAKind(cards) != null) return "Four of a Kind";
         if (FindFullHouse(cards) != null) return "Full House";
-        if (FindFlush(cards) != null) return "Flush";
+
+        // Flush는 curRound가 3 이상인 경우에만 평가
+        if (GameManager.Instance.CardManager.CheckCurRound() >= 3 && FindFlush(cards) != null) return "Flush";
+
         if (FindStraight(cards) != null) return "Straight";
         if (FindThreeOfAKind(cards) != null) return "Three of a Kind";
         if (FindTwoPair(cards) != null) return "Two Pair";
         if (FindOnePair(cards) != null) return "One Pair";
         return "High Card";
     }
+
 
     // 각 족보를 평가하는 메서드들
 
