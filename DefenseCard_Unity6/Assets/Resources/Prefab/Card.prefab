@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 9199546544470784489}
   - component: {fileID: 8279897927598251975}
   - component: {fileID: 8909275844764442753}
+  - component: {fileID: 2294564882077936304}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -310,6 +311,24 @@ MonoBehaviour:
   symbolImage2: {fileID: 1284043063433736973}
   valueText1: {fileID: 8739788392158203102}
   valueText2: {fileID: 1864629575102313302}
+  cardInfo:
+    cardType: 0
+    cardNum: 0
+  originPos: {x: 0, y: 0, z: 0}
+  isSelected: 0
+  isSelectionEnabled: 0
+--- !u!225 &2294564882077936304
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6065165887872567212}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6892579106909577913
 GameObject:
   m_ObjectHideFlags: 0

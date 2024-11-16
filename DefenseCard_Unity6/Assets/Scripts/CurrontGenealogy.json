@@ -3,27 +3,27 @@
         {
             "id": 0,
             "type": "clubs",
-            "value": 12
+            "value": 11
         },
         {
             "id": 1,
             "type": "clubs",
-            "value": 13
+            "value": 7
         },
         {
             "id": 2,
             "type": "clubs",
-            "value": 10
+            "value": 12
         },
         {
             "id": 3,
             "type": "clubs",
-            "value": 9
+            "value": 6
         },
         {
             "id": 4,
             "type": "clubs",
-            "value": 3
+            "value": 10
         }
     ]
 }
