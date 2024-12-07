@@ -147,7 +147,7 @@ public class UIManager : MonoBehaviour
     /// <param name="round">현재 라운드</param>
     public void UpdateRoundText (int round)
     {
-        roundText.text = $"Rounds: {round}";
+        roundText.text = $"Rounds: {round + 1}";
     }
 
     /// <summary>
