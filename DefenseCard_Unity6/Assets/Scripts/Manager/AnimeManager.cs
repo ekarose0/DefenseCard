@@ -25,7 +25,7 @@ public class AnimeManager : MonoBehaviour
         // 자식 오브젝트에서 AnimationCard와 AnimationTable 컴포넌트 찾기
         animationCard = GetComponentInChildren<AnimationCard>();
         animationTable = GetComponentInChildren<AnimationTable>();
-
+        
         if (animationCard == null)
         {
             Debug.LogError("AnimationCard를 찾을 수 없습니다. AnimeManager의 자식에 추가되었는지 확인하세요.");
