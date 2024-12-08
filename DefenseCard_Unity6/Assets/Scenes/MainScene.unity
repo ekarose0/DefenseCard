@@ -269,7 +269,6 @@ MonoBehaviour:
   spadesSO: {fileID: 11400000, guid: c3885e0090b35b34484653ea339e448b, type: 2}
   curRound: 0
   drawIndex: 0
-  fullDeck: []
   activeDeck: []
   cardDeck: []
   canvasTransform: {fileID: 1962453024}
@@ -486,7 +485,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press 'Space' to Next Stage or 'Tab' to Disable UI!
+  m_text: Press 'Space' to Setting Hand or 'Tab' to Disable UI!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f922e4d9cc2a5614980cb850ee4fc4c0, type: 2}
   m_sharedMaterial: {fileID: -1273426820450364583, guid: f922e4d9cc2a5614980cb850ee4fc4c0, type: 2}

@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour
     public Transform SingleBackCard_Transform;
     public Transform SingleFrontCard_LastTransform;
 
-    public bool canInputKey = true; // Å°ÀÔ·Â °¡´É ¿©ºÎ
-    public bool isSpaceActionAvailable = true; // Space ¿¬Ãâ °¡´É ¿©ºÎ
+    public bool canInputKey = true; // í‚¤ì…ë ¥ ê°€ëŠ¥ ì—¬ë¶€
+    public bool isSpaceActionAvailable = true; // Space ì—°ì¶œ ê°€ëŠ¥ ì—¬ë¶€
 
     public int money;
 
@@ -52,43 +52,46 @@ public class GameManager : MonoBehaviour
                 CardManager.ReplaceCard();
             }
             else
-                UIManager.UpdateNoticeText("ÄÚÀÎÀÌ ºÎÁ·ÇÏ¿© Ä«µå¸¦ ±³Ã¼ÇÒ ¼ö ¾ø½À´Ï´Ù!");
+
+               UIManager.UpdateNoticeText("Not enough Coin!");
         }
         else
-            Debug.LogError("¿¬ÃâÀÌ Á¾·áµÇÁö ¾Ê¾Ò½À´Ï´Ù");
+            Debug.LogError("ì—°ì¶œì´ ì¢…ë£Œë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤");
     }
 
     public void UsedBinAction()
     {
         if (canInputKey)
         {
-            // CardManagerÀÇ myHand°¡ 5°³ÀÇ µ¥ÀÌÅÍ¸¦ °¡Áö°í ÀÖ´ÂÁö È®ÀÎ
+            // CardManagerì˜ myHandê°€ 5ê°œì˜ ë°ì´í„°ë¥¼ ê°€ì§€ê³  ìˆëŠ”ì§€ í™•ì¸
             if (CardManager.myHand != null && CardManager.myHand.Count == 5)
             {
-                // NoticeUI ¾÷µ¥ÀÌÆ®
-                UIManager.UpdateNoticeText("Press 'Space' to Next Stage or 'Tab' to Disable UI!");
+                // NoticeUI ì—…ë°ì´íŠ¸
 
-                // CardManager¿¡¼­ ÇöÀç Á¸ÀçÇÏ´Â Ä«µå 5Àå »èÁ¦
+                UIManager.UpdateNoticeText("Press 'Space' to Setting Hand or 'Tab' to Disable UI!");
+
+
+                // CardManagerì—ì„œ í˜„ì¬ ì¡´ì¬í•˜ëŠ” ì¹´ë“œ 5ì¥ ì‚­ì œ
                 CardManager.ClearCurrentCards();
 
-                // curRound Áõ°¡
+                // curRound ì¦ê°€
                 CardManager.IncrementRound();
 
-                // µô·¹ÀÌ ÈÄ Á·º¸ ÀÌ¸§ ¾÷µ¥ÀÌÆ®
+                // ë”œë ˆì´ í›„ ì¡±ë³´ ì´ë¦„ ì—…ë°ì´íŠ¸
                 StartCoroutine(UpdateBestHandWithDelay());
 
-                isSpaceActionAvailable = true; // Space ¿¬Ãâ ´Ù½Ã È°¼ºÈ­
+                isSpaceActionAvailable = true; // Space ì—°ì¶œ ë‹¤ì‹œ í™œì„±í™”
             }
             else
-                Debug.LogError("ÇöÀç ¼Õ¿¡ Ä«µå°¡ 5ÀåÀÌ ¾ø½À´Ï´Ù.");
+                Debug.LogError("í˜„ì¬ ì†ì— ì¹´ë“œê°€ 5ì¥ì´ ì—†ìŠµë‹ˆë‹¤.");
         }
         else
-            Debug.LogError("¿¬ÃâÀÌ Á¾·áµÇÁö ¾Ê¾Ò½À´Ï´Ù");
+            Debug.LogError("ì—°ì¶œì´ ì¢…ë£Œë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤");
     }
 
     public void NowCardUpdate()
     {
-        // µô·¹ÀÌ ÈÄ Á·º¸ ÀÌ¸§ ¾÷µ¥ÀÌÆ®
+        // ë”œë ˆì´ í›„ ì¡±ë³´ ì´ë¦„ ì—…ë°ì´íŠ¸
         StartCoroutine(UpdateCurrentHandWithDelay());
     }
 
