@@ -16,6 +16,7 @@ MonoBehaviour:
   - cardType: 0
     cardImage: {fileID: 0}
     cardNum: 1
+<<<<<<< Updated upstream
     isSelected: 0
   - cardType: 0
     cardImage: {fileID: 0}
@@ -63,5 +64,29 @@ MonoBehaviour:
     isSelected: 0
   - cardType: 0
     cardImage: {fileID: 0}
+=======
+  - cardType: 2
+    cardNum: 2
+  - cardType: 2
+    cardNum: 3
+  - cardType: 2
+    cardNum: 4
+  - cardType: 2
+    cardNum: 5
+  - cardType: 2
+    cardNum: 6
+  - cardType: 2
+    cardNum: 7
+  - cardType: 2
+    cardNum: 8
+  - cardType: 2
+    cardNum: 9
+  - cardType: 2
+    cardNum: 10
+  - cardType: 2
+    cardNum: 11
+  - cardType: 2
+    cardNum: 12
+  - cardType: 2
+>>>>>>> Stashed changes
     cardNum: 13
-    isSelected: 0

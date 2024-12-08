@@ -1,0 +1,29 @@
+{
+    "cards": [
+        {
+            "id": 0,
+            "type": "clubs",
+            "value": 11
+        },
+        {
+            "id": 1,
+            "type": "clubs",
+            "value": 12
+        },
+        {
+            "id": 2,
+            "type": "clubs",
+            "value": 10
+        },
+        {
+            "id": 3,
+            "type": "clubs",
+            "value": 7
+        },
+        {
+            "id": 4,
+            "type": "clubs",
+            "value": 13
+        }
+    ]
+}
