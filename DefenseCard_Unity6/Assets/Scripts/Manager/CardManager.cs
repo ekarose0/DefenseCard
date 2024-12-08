@@ -14,13 +14,13 @@ public class CardManager : MonoBehaviour
     [SerializeField] CardSO spadesSO;
 
     [Space]
-    [SerializeField] int curRound = 0; // ¹®¾ç È°¼ºÈ­ ´Ü°è
-    [SerializeField] int drawIndex = 0; // µ¦¿¡¼­ »ÌÀº Ä«µåÀÇ ¼ø¼­
+    [SerializeField] int curRound = 0; // ë¬¸ì–‘ í™œì„±í™” ë‹¨ê³„
+    [SerializeField] int drawIndex = 0; // ë±ì—ì„œ ë½‘ì€ ì¹´ë“œì˜ ìˆœì„œ
 
     [Space]
     [Header("Deck Info")]
-    [SerializeField] List<CardSO> activeDeck = new List<CardSO>(4); //¶ó¿îµå¿¡ µû¶ó È°¼ºÈ­µÇ´Â ¹®¾çÀ» ³Ö¾îÁÖ´Â ¸®½ºÆ®
-    [SerializeField] List<CardInfo> cardDeck = new List<CardInfo>(52); //Ãß°¡µÈ ¹®¾çÀÇ Ä«µå °¢°¢ÀÇ Á¤º¸¸¦ ÀúÀåÇÏ´Â ¸®½ºÆ®
+    [SerializeField] List<CardSO> activeDeck = new List<CardSO>(4); //ë¼ìš´ë“œì— ë”°ë¼ í™œì„±í™”ë˜ëŠ” ë¬¸ì–‘ì„ ë„£ì–´ì£¼ëŠ” ë¦¬ìŠ¤íŠ¸
+    [SerializeField] List<CardInfo> cardDeck = new List<CardInfo>(52); //ì¶”ê°€ëœ ë¬¸ì–‘ì˜ ì¹´ë“œ ê°ê°ì˜ ì •ë³´ë¥¼ ì €ì¥í•˜ëŠ” ë¦¬ìŠ¤íŠ¸
 
     [Space]
     [Header("Card Configuration")]
@@ -32,7 +32,7 @@ public class CardManager : MonoBehaviour
     [SerializeField] public List<ThisCardData> myHand;
 
     [Space]
-    [Header("Ä«µå ±³Ã¼ ºñ¿ë")]
+    [Header("ì¹´ë“œ êµì²´ ë¹„ìš©")]
     private const int CardCost = 1;
 
     [System.Serializable]
@@ -55,7 +55,7 @@ public class CardManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ÃÊ±â 5ÀåÀÇ Ä«µå¸¦ »ı¼º
+    /// ì´ˆê¸° 5ì¥ì˜ ì¹´ë“œë¥¼ ìƒì„±
     /// </summary>
     public void InitializeStartingHand()
     {
@@ -68,27 +68,27 @@ public class CardManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Æ¯Á¤ À§Ä¡¿¡ »õ Ä«µå¸¦ »ı¼º
+    /// íŠ¹ì • ìœ„ì¹˜ì— ìƒˆ ì¹´ë“œë¥¼ ìƒì„±
     /// </summary>
     private void AddCard(int positionIndex)
     {
         var cardObject = Instantiate(cardPrefab, Vector3.zero, Quaternion.identity);
 
-        // ºÎ¸ğ¸¦ SingleFrontCard_MiddleTransformÀ¸·Î ¼³Á¤
+        // ë¶€ëª¨ë¥¼ SingleFrontCard_MiddleTransformìœ¼ë¡œ ì„¤ì •
         cardObject.transform.SetParent(SingleFrontCard_MiddleTransform, false);
 
         var cardData = cardObject.GetComponent<ThisCardData>();
         cardData.Setup(PopCard());
 
-        // Ä«µå À§Ä¡ ¼³Á¤
+        // ì¹´ë“œ ìœ„ì¹˜ ì„¤ì •
         PlaceCardAtPosition(cardObject, positionIndex);
 
-        // Ä«µå ¸ñ·Ï¿¡ Ãß°¡
+        // ì¹´ë“œ ëª©ë¡ì— ì¶”ê°€
         myHand.Add(cardData);
     }
 
     /// <summary>
-    /// Ä«µå À§Ä¡¸¦ ¼³Á¤
+    /// ì¹´ë“œ ìœ„ì¹˜ë¥¼ ì„¤ì •
     /// </summary>
     public void PlaceCardAtPosition(GameObject cardObject, int positionIndex)
     {
@@ -100,7 +100,7 @@ public class CardManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ±³Ã¼µÈ Ä«µå µ¥ÀÌÅÍ¸¦ »õ·Î »ı¼º
+    /// êµì²´ëœ ì¹´ë“œ ë°ì´í„°ë¥¼ ìƒˆë¡œ ìƒì„±
     /// </summary>
     public void GenerateReplacedCards(List<int> replacedCardIndices)
     {
@@ -118,7 +118,7 @@ public class CardManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ¸ğµç ¾Õ¸é Ä«µå¸¦ SingleFrontCard_LastTransformÀ¸·Î ÀÌµ¿
+    /// ëª¨ë“  ì•ë©´ ì¹´ë“œë¥¼ SingleFrontCard_LastTransformìœ¼ë¡œ ì´ë™
     /// </summary>
     public void MoveFrontCardsToLast()
     {
@@ -132,7 +132,7 @@ public class CardManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Ä«µå ±³Ã¼
+    /// ì¹´ë“œ êµì²´
     /// </summary>
     public void ReplaceCard()
     {
@@ -144,7 +144,7 @@ public class CardManager : MonoBehaviour
         {
             if (myHand[i].isSelected)
             {
-                // ºñ¿ë °è»ê
+                // ë¹„ìš© ê³„ì‚°
                 if (!GameManager.Instance.CanAfford(CardCost))
                 {
                     GameManager.Instance.UIManager.ShowWarning("Not enough coins to replace the card!");
@@ -154,7 +154,7 @@ public class CardManager : MonoBehaviour
                 Debug.Log("Change Card");
                 GameManager.Instance.ChangeMoney(-CardCost);
 
-                // ±³Ã¼ ´ë»ó Ãß°¡
+                // êµì²´ ëŒ€ìƒ ì¶”ê°€
                 cardsToDelete.Add(myHand[i].gameObject);
                 replacedCardIndices.Add(i);
                 cardReplaced = true;
@@ -174,7 +174,7 @@ public class CardManager : MonoBehaviour
 
 
     /// <summary>
-    /// ¹®¾ç È°¼ºÈ­¿¡ µû¶ó µ¦ ¼³Á¤
+    /// ë¬¸ì–‘ í™œì„±í™”ì— ë”°ë¼ ë± ì„¤ì •
     /// </summary>
     private void UpdateActiveDeck()
     {
@@ -190,7 +190,7 @@ public class CardManager : MonoBehaviour
     }
 
     /// <summary>
-    /// È°¼ºÈ­µÈ ¹®¾çÀÇ Ä«µå¸¦ µ¦¿¡ Ãß°¡
+    /// í™œì„±í™”ëœ ë¬¸ì–‘ì˜ ì¹´ë“œë¥¼ ë±ì— ì¶”ê°€
     /// </summary>
     private void SetupDeck()
     {
@@ -206,7 +206,7 @@ public class CardManager : MonoBehaviour
     }
 
     /// <summary>
-    /// µ¦ ¼¯±â
+    /// ë± ì„ê¸°
     /// </summary>
     private void ShuffleDeck()
     {
@@ -218,7 +218,7 @@ public class CardManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Ä«µå »Ì±â
+    /// ì¹´ë“œ ë½‘ê¸°
     /// </summary>
     private CardInfo PopCard()
     {
@@ -234,7 +234,7 @@ public class CardManager : MonoBehaviour
 
     public void ClearCurrentCards()
     {
-        // ÇöÀç Ä«µå »èÁ¦ (¿¬Ãâ ¾øÀÌ ¹Ù·Î »èÁ¦)
+        // í˜„ì¬ ì¹´ë“œ ì‚­ì œ (ì—°ì¶œ ì—†ì´ ë°”ë¡œ ì‚­ì œ)
         foreach (var card in myHand)
         {
             if (card != null)
@@ -254,9 +254,9 @@ public class CardManager : MonoBehaviour
 
 
     /// <summary>
-    /// Ä«µå ¼±ÅÃ »óÅÂ¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+    /// ì¹´ë“œ ì„ íƒ ìƒíƒœë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
     /// </summary>
-    /// <param name="isEnabled">¼±ÅÃ »óÅÂ¸¦ ¼³Á¤ÇÒ °ª (true: È°¼ºÈ­, false: ºñÈ°¼ºÈ­)</param>
+    /// <param name="isEnabled">ì„ íƒ ìƒíƒœë¥¼ ì„¤ì •í•  ê°’ (true: í™œì„±í™”, false: ë¹„í™œì„±í™”)</param>
     public void SetCardSelection(bool isEnabled)
     {
         foreach (var card in myHand)
@@ -294,7 +294,7 @@ public class CardManager : MonoBehaviour
         File.WriteAllText(JsonFilePath, jsonContent);
 
 #if UNITY_EDITOR
-        AssetDatabase.Refresh(); // ¿¡µğÅÍ ÆÄÀÏ °»½Å
+        AssetDatabase.Refresh(); // ì—ë””í„° íŒŒì¼ ê°±ì‹ 
 #endif
     }
 }

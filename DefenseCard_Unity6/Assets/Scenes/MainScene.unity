@@ -650,7 +650,7 @@ MonoBehaviour:
   SingleFrontCard_LastTransform: {fileID: 1660509750}
   canInputKey: 1
   isSpaceActionAvailable: 1
-  money: 3
+  money: 50
 --- !u!4 &494622897
 Transform:
   m_ObjectHideFlags: 0

@@ -11,9 +11,7 @@ public enum CardType
 public class CardInfo
 {
     public CardType cardType;
-    public Sprite cardImage;
     public int cardNum;
-    public bool isSelected;
 }
 
 [CreateAssetMenu(fileName = "Cards", menuName = "ScriptableObjects/CardsSO")]

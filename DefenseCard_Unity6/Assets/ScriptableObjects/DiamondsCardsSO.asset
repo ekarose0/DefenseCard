@@ -13,55 +13,42 @@ MonoBehaviour:
   m_Name: DiamondsCardsSO
   m_EditorClassIdentifier: 
   cardInfo:
-  - cardType: 0
-    cardImage: {fileID: 0}
+  - cardType: 1
     cardNum: 1
     isSelected: 0
-  - cardType: 0
-    cardImage: {fileID: 0}
+  - cardType: 1
     cardNum: 2
     isSelected: 0
-  - cardType: 0
-    cardImage: {fileID: 0}
+  - cardType: 1
     cardNum: 3
-    isSelected: 0
-  - cardType: 0
-    cardImage: {fileID: 0}
+    isSelected: 1
+  - cardType: 1
     cardNum: 4
     isSelected: 0
-  - cardType: 0
-    cardImage: {fileID: 0}
+  - cardType: 1
     cardNum: 5
     isSelected: 0
-  - cardType: 0
-    cardImage: {fileID: 0}
+  - cardType: 1
     cardNum: 6
     isSelected: 0
-  - cardType: 0
-    cardImage: {fileID: 0}
+  - cardType: 1
     cardNum: 7
     isSelected: 0
-  - cardType: 0
-    cardImage: {fileID: 0}
+  - cardType: 1
     cardNum: 8
     isSelected: 0
-  - cardType: 0
-    cardImage: {fileID: 0}
+  - cardType: 1
     cardNum: 9
     isSelected: 0
-  - cardType: 0
-    cardImage: {fileID: 0}
+  - cardType: 1
     cardNum: 10
     isSelected: 0
-  - cardType: 0
-    cardImage: {fileID: 0}
+  - cardType: 1
     cardNum: 11
     isSelected: 0
-  - cardType: 0
-    cardImage: {fileID: 0}
+  - cardType: 1
     cardNum: 12
     isSelected: 0
-  - cardType: 0
-    cardImage: {fileID: 0}
+  - cardType: 1
     cardNum: 13
     isSelected: 0

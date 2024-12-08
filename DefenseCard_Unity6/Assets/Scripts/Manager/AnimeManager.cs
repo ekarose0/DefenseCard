@@ -3,46 +3,46 @@ using UnityEngine;
 
 public class AnimeManager : MonoBehaviour
 {
-    [Header("Ä«µå ¼³Á¤")]
-    private AnimationCard animationCard; // AnimationCard ÄÄÆ÷³ÍÆ®
+    [Header("ì¹´ë“œ ì„¤ì •")]
+    private AnimationCard animationCard; // AnimationCard ì»´í¬ë„ŒíŠ¸
 
-    [Header("¾Ö´Ï¸ŞÀÌ¼Ç Å×ÀÌºí ¼³Á¤")]
-    [SerializeField] private AnimationTable animationTable; // AnimationTable ÄÄÆ÷³ÍÆ®
-    private RectTransform cardTableUI; // UIManager¿¡¼­ °¡Á®¿À´Â cardTableUI
+    [Header("ì• ë‹ˆë©”ì´ì…˜ í…Œì´ë¸” ì„¤ì •")]
+    [SerializeField] private AnimationTable animationTable; // AnimationTable ì»´í¬ë„ŒíŠ¸
+    private RectTransform cardTableUI; // UIManagerì—ì„œ ê°€ì ¸ì˜¤ëŠ” cardTableUI
 
-    private bool isMovingUp = false;  // ÇöÀç ÀÌµ¿ ¹æÇâ (true: À§·Î, false: ¾Æ·¡·Î)
-    private bool isAnimating = false; // ¾Ö´Ï¸ŞÀÌ¼Ç ÁøÇà »óÅÂ
+    private bool isMovingUp = false;  // í˜„ì¬ ì´ë™ ë°©í–¥ (true: ìœ„ë¡œ, false: ì•„ë˜ë¡œ)
+    private bool isAnimating = false; // ì• ë‹ˆë©”ì´ì…˜ ì§„í–‰ ìƒíƒœ
 
-    [Header("¾Ö´Ï¸ŞÀÌ¼Ç ¼³Á¤")]
-    [SerializeField] private float firstAnimationDuration = 0.5f; // 1Â÷ ÀÌµ¿ ½Ã°£
-    [SerializeField] private float firstAnimationDistance = 50f;  // 1Â÷ ÀÌµ¿ °Å¸® (»ó´ë°ª)
-    [SerializeField] private float secondAnimationDuration = 0.6f;  // 2Â÷ ÀÌµ¿ ½Ã°£
-    [SerializeField] private float upperPositionY = -75f;         // 2Â÷ ¸ñÇ¥ »ó´Ü À§Ä¡
-    [SerializeField] private float lowerPositionY = -885f;       // 2Â÷ ¸ñÇ¥ ÇÏ´Ü À§Ä¡
+    [Header("ì• ë‹ˆë©”ì´ì…˜ ì„¤ì •")]
+    [SerializeField] private float firstAnimationDuration = 0.5f; // 1ì°¨ ì´ë™ ì‹œê°„
+    [SerializeField] private float firstAnimationDistance = 50f;  // 1ì°¨ ì´ë™ ê±°ë¦¬ (ìƒëŒ€ê°’)
+    [SerializeField] private float secondAnimationDuration = 0.6f;  // 2ì°¨ ì´ë™ ì‹œê°„
+    [SerializeField] private float upperPositionY = -75f;         // 2ì°¨ ëª©í‘œ ìƒë‹¨ ìœ„ì¹˜
+    [SerializeField] private float lowerPositionY = -885f;       // 2ì°¨ ëª©í‘œ í•˜ë‹¨ ìœ„ì¹˜
 
     private void Awake()
     {
-        // ÀÚ½Ä ¿ÀºêÁ§Æ®¿¡¼­ AnimationCard¿Í AnimationTable ÄÄÆ÷³ÍÆ® Ã£±â
+        // ìì‹ ì˜¤ë¸Œì íŠ¸ì—ì„œ AnimationCardì™€ AnimationTable ì»´í¬ë„ŒíŠ¸ ì°¾ê¸°
         animationCard = GetComponentInChildren<AnimationCard>();
         animationTable = GetComponentInChildren<AnimationTable>();
 
         if (animationCard == null)
         {
-            Debug.LogError("AnimationCard¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù. AnimeManagerÀÇ ÀÚ½Ä¿¡ Ãß°¡µÇ¾ú´ÂÁö È®ÀÎÇÏ¼¼¿ä.");
+            Debug.LogError("AnimationCardë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤. AnimeManagerì˜ ìì‹ì— ì¶”ê°€ë˜ì—ˆëŠ”ì§€ í™•ì¸í•˜ì„¸ìš”.");
         }
 
-        // AnimationTable ÃÊ±âÈ­
+        // AnimationTable ì´ˆê¸°í™”
         if (animationTable == null)
         {
-            Debug.LogError("[AnimeManager] AnimationTableÀÌ ¼³Á¤µÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+            Debug.LogError("[AnimeManager] AnimationTableì´ ì„¤ì •ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
             return;
         }
 
-        // UIManager¿¡¼­ cardTableUI °¡Á®¿À±â
+        // UIManagerì—ì„œ cardTableUI ê°€ì ¸ì˜¤ê¸°
         cardTableUI = GameManager.Instance.UIManager.GetCardTableUI();
         if (cardTableUI == null)
         {
-            Debug.LogError("[AnimeManager] CardTableUI¸¦ UIManager¿¡¼­ °¡Á®¿ÀÁö ¸øÇß½À´Ï´Ù.");
+            Debug.LogError("[AnimeManager] CardTableUIë¥¼ UIManagerì—ì„œ ê°€ì ¸ì˜¤ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
         }
         else
         {
@@ -52,12 +52,12 @@ public class AnimeManager : MonoBehaviour
 
     private void Start()
     {
-        animationCard.InstantiateCardPack(); // µŞ¸é Ä«µåÆÑ ÃÊ±âÈ­
+        animationCard.InstantiateCardPack(); // ë’·ë©´ ì¹´ë“œíŒ© ì´ˆê¸°í™”
     }
 
     #region Card Anime
     /// <summary>
-    /// ÃÊ±â 5ÀåÀÇ Ä«µå »ı¼º ¾Ö´Ï¸ŞÀÌ¼Ç ½ÇÇà
+    /// ì´ˆê¸° 5ì¥ì˜ ì¹´ë“œ ìƒì„± ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰
     /// </summary>
     public void StartInitialCardAnimation()
     {
@@ -67,27 +67,27 @@ public class AnimeManager : MonoBehaviour
             {
                 if (!isMovingUp)
                 {
-                    // Å°ÀÔ·Â ºÒ°¡»óÅÂ º¯È¯
+                    // í‚¤ì…ë ¥ ë¶ˆê°€ìƒíƒœ ë³€í™˜
                     GameManager.Instance.canInputKey = false;
                     GameManager.Instance.isSpaceActionAvailable = false;
 
-                    // ÀÛµ¿½ÃÀÛ
-                    GameManager.Instance.UIManager.UpdateNoticeText("In Progress..."); // NowCardUI ÅØ½ºÆ® Ãâ·Â
-                    animationCard.SetReplacedCards(new List<int> { 0, 1, 2, 3, 4 }); // 5ÀåÀÇ Ä«µå »ı¼º
-                    animationCard.PlayCardDrawAnimation(true); // ÀüÃ¼ Ä«µå ¿¬Ãâ
+                    // ì‘ë™ì‹œì‘
+                    GameManager.Instance.UIManager.UpdateNoticeText("In Progress..."); // NowCardUI í…ìŠ¤íŠ¸ ì¶œë ¥
+                    animationCard.SetReplacedCards(new List<int> { 0, 1, 2, 3, 4 }); // 5ì¥ì˜ ì¹´ë“œ ìƒì„±
+                    animationCard.PlayCardDrawAnimation(true); // ì „ì²´ ì¹´ë“œ ì—°ì¶œ
                 }
                 else
-                    Debug.LogError("Å×ÀÌºíÀ» ¿Ã·ÁÁÖ¼¼¿ä");
+                    Debug.LogError("í…Œì´ë¸”ì„ ì˜¬ë ¤ì£¼ì„¸ìš”");
             }
             else
-                Debug.LogError("ÀÌ¹Ì Àü°³µÇ¾îÀÖ´Â Ä«µå¸¦ »ç¿ëÇØÁÖ¼¼¿ä");
+                Debug.LogError("ì´ë¯¸ ì „ê°œë˜ì–´ìˆëŠ” ì¹´ë“œë¥¼ ì‚¬ìš©í•´ì£¼ì„¸ìš”");
         }
         else
-            Debug.LogError("¿¬ÃâÀÌ Á¾·áµÇÁö ¾Ê¾Ò½À´Ï´Ù");    
+            Debug.LogError("ì—°ì¶œì´ ì¢…ë£Œë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤");    
     }
 
     /// <summary>
-    /// ±³Ã¼µÈ Ä«µåÀÇ ¾Ö´Ï¸ŞÀÌ¼Ç ½ÇÇà
+    /// êµì²´ëœ ì¹´ë“œì˜ ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰
     /// </summary>
     public void StartReplaceAnimation(List<GameObject> cardsToDelete, List<int> replacedCardIndices)
     {
@@ -96,22 +96,22 @@ public class AnimeManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Ä«µå ¿¬Ãâ ¿Ï·á
+    /// ì¹´ë“œ ì—°ì¶œ ì™„ë£Œ
     /// </summary>
-    /// <param name="result">Ä«µå¼±ÅÃ °¡´É¿©ºÎ</param>
+    /// <param name="result">ì¹´ë“œì„ íƒ ê°€ëŠ¥ì—¬ë¶€</param>
     public void CardOnMoveComplete(bool result)
     {
         GameManager.Instance.CardManager.SaveHandToJson();
         GameManager.Instance.CardManager.SetCardSelection(result);
         GameManager.Instance.NowCardUpdate();
-        GameManager.Instance.canInputKey = true; // ÀçÀÔ·Â °¡´É
+        GameManager.Instance.canInputKey = true; // ì¬ì…ë ¥ ê°€ëŠ¥
     }
 
     #endregion
 
     #region Table Anime
     /// <summary>
-    /// Ä«µå Å×ÀÌºí ¾Ö´Ï¸ŞÀÌ¼Ç Åä±Û
+    /// ì¹´ë“œ í…Œì´ë¸” ì• ë‹ˆë©”ì´ì…˜ í† ê¸€
     /// </summary>
     public void ToggleCardTableAnimation()
     {
@@ -120,65 +120,65 @@ public class AnimeManager : MonoBehaviour
             if (isAnimating)
             {
                 GameManager.Instance.UIManager.UpdateNoticeText("Animation in progress. Please wait.");
-                Debug.LogWarning("[AnimeManager] ¾Ö´Ï¸ŞÀÌ¼Ç ÁøÇà ÁßÀÔ´Ï´Ù. ÀÔ·ÂÀÌ ¹«½ÃµË´Ï´Ù.");
+                Debug.LogWarning("[AnimeManager] ì• ë‹ˆë©”ì´ì…˜ ì§„í–‰ ì¤‘ì…ë‹ˆë‹¤. ì…ë ¥ì´ ë¬´ì‹œë©ë‹ˆë‹¤.");
             }
             else
             {
-                isAnimating = true; // ¾Ö´Ï¸ŞÀÌ¼Ç »óÅÂ È°¼ºÈ­
+                isAnimating = true; // ì• ë‹ˆë©”ì´ì…˜ ìƒíƒœ í™œì„±í™”
                 GameManager.Instance.UIManager.UpdateNoticeText("Now Moving!");
                 StartFullAnimation();
             }
         }
         else
         {
-            Debug.LogError("¿¬ÃâÀÌ Á¾·áµÇÁö ¾Ê¾Ò½À´Ï´Ù");
+            Debug.LogError("ì—°ì¶œì´ ì¢…ë£Œë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤");
         }
     }
 
     /// <summary>
-    /// 1Â÷ + 2Â÷ ¾Ö´Ï¸ŞÀÌ¼Ç ½ÃÀÛ
+    /// 1ì°¨ + 2ì°¨ ì• ë‹ˆë©”ì´ì…˜ ì‹œì‘
     /// </summary>
     private void StartFullAnimation()
     {
         float firstOffset = isMovingUp ? -firstAnimationDistance : firstAnimationDistance;
         float secondTarget = isMovingUp ? upperPositionY : lowerPositionY;
 
-        //Debug.Log($"[Åä±Û] 1Â÷ ÀÌµ¿ °Å¸®: {firstOffset}, 2Â÷ ¸ñÇ¥ ÁÂÇ¥: {secondTarget}");
+        //Debug.Log($"[í† ê¸€] 1ì°¨ ì´ë™ ê±°ë¦¬: {firstOffset}, 2ì°¨ ëª©í‘œ ì¢Œí‘œ: {secondTarget}");
         animationTable.StartFullAnimation(
             firstOffset,
             firstAnimationDuration,
             secondTarget,
             secondAnimationDuration,
-            isMovingUp ? TableOnMoveUpComplete : TableOnMoveDownComplete // Äİ¹é Àü´Ş
+            isMovingUp ? TableOnMoveUpComplete : TableOnMoveDownComplete // ì½œë°± ì „ë‹¬
         );
 
-        isMovingUp = !isMovingUp; // ¹æÇâ ¹İÀü
+        isMovingUp = !isMovingUp; // ë°©í–¥ ë°˜ì „
     }
 
     /// <summary>
-    /// ¿Ã¶ó°¡´Â ¿¬Ãâ ¿Ï·á ½Ã È£Ãâ
+    /// ì˜¬ë¼ê°€ëŠ” ì—°ì¶œ ì™„ë£Œ ì‹œ í˜¸ì¶œ
     /// </summary>
     private void TableOnMoveUpComplete()
     {
         if (GameManager.Instance.CardManager.myHand.Count>0)
                 GameManager.Instance.NowCardUpdate();
         else
-        //Debug.Log("[AnimeManager] ¿Ã¶ó°¡´Â ¿¬ÃâÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+        //Debug.Log("[AnimeManager] ì˜¬ë¼ê°€ëŠ” ì—°ì¶œì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
         GameManager.Instance.UIManager.UpdateNoticeText("Press 'Space' to Setting Hand or 'Tab' to Disable UI!");
 
-        isAnimating = false; // ¾Ö´Ï¸ŞÀÌ¼Ç »óÅÂ ÇØÁ¦
-        GameManager.Instance.canInputKey = true; // Å° ÀÔ·Â °¡´É»óÅÂ º¯È¯
+        isAnimating = false; // ì• ë‹ˆë©”ì´ì…˜ ìƒíƒœ í•´ì œ
+        GameManager.Instance.canInputKey = true; // í‚¤ ì…ë ¥ ê°€ëŠ¥ìƒíƒœ ë³€í™˜
     }
 
     /// <summary>
-    /// ³»·Á°¡´Â ¿¬Ãâ ¿Ï·á ½Ã È£Ãâ
+    /// ë‚´ë ¤ê°€ëŠ” ì—°ì¶œ ì™„ë£Œ ì‹œ í˜¸ì¶œ
     /// </summary>
     private void TableOnMoveDownComplete()
     {
-        //Debug.Log("[AnimeManager] ³»·Á°¡´Â ¿¬ÃâÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+        //Debug.Log("[AnimeManager] ë‚´ë ¤ê°€ëŠ” ì—°ì¶œì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
         GameManager.Instance.UIManager.UpdateNoticeText("Press 'Tab' to Active UI!");
-        isAnimating = false; // ¾Ö´Ï¸ŞÀÌ¼Ç »óÅÂ ÇØÁ¦
-        GameManager.Instance.canInputKey = true; // Å° ÀÔ·Â °¡´É»óÅÂ º¯È¯
+        isAnimating = false; // ì• ë‹ˆë©”ì´ì…˜ ìƒíƒœ í•´ì œ
+        GameManager.Instance.canInputKey = true; // í‚¤ ì…ë ¥ ê°€ëŠ¥ìƒíƒœ ë³€í™˜
     }
     #endregion
 }

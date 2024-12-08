@@ -13,58 +13,8 @@ MonoBehaviour:
   m_Name: HeartsCardsSO
   m_EditorClassIdentifier: 
   cardInfo:
-  - cardType: 0
-    cardImage: {fileID: 0}
+  - cardType: 2
     cardNum: 1
-<<<<<<< Updated upstream
-    isSelected: 0
-  - cardType: 0
-    cardImage: {fileID: 0}
-    cardNum: 2
-    isSelected: 0
-  - cardType: 0
-    cardImage: {fileID: 0}
-    cardNum: 3
-    isSelected: 0
-  - cardType: 0
-    cardImage: {fileID: 0}
-    cardNum: 4
-    isSelected: 0
-  - cardType: 0
-    cardImage: {fileID: 0}
-    cardNum: 5
-    isSelected: 0
-  - cardType: 0
-    cardImage: {fileID: 0}
-    cardNum: 6
-    isSelected: 0
-  - cardType: 0
-    cardImage: {fileID: 0}
-    cardNum: 7
-    isSelected: 0
-  - cardType: 0
-    cardImage: {fileID: 0}
-    cardNum: 8
-    isSelected: 0
-  - cardType: 0
-    cardImage: {fileID: 0}
-    cardNum: 9
-    isSelected: 0
-  - cardType: 0
-    cardImage: {fileID: 0}
-    cardNum: 10
-    isSelected: 0
-  - cardType: 0
-    cardImage: {fileID: 0}
-    cardNum: 11
-    isSelected: 0
-  - cardType: 0
-    cardImage: {fileID: 0}
-    cardNum: 12
-    isSelected: 0
-  - cardType: 0
-    cardImage: {fileID: 0}
-=======
   - cardType: 2
     cardNum: 2
   - cardType: 2
@@ -88,5 +38,5 @@ MonoBehaviour:
   - cardType: 2
     cardNum: 12
   - cardType: 2
->>>>>>> Stashed changes
+  - cardType: 2
     cardNum: 13
